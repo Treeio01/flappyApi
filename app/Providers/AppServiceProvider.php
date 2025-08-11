@@ -11,7 +11,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        $this->app->singleton(TelegramService::class, function ($app) {
+            return new TelegramService(); // тут можно конфиг передать
+        });
     }
 
     /**

@@ -30,6 +30,10 @@ return [
         'redirect' => env('DISCORD_REDIRECT_URI'),
         'frontend_url' => env('FRONTEND_URL')
     ],
+    'telegram' => [
+        'chat_id' => env('TELEGRAM_CHAT_ID'),
+        'token' => env('TELEGRAM_BOT_TOKEN')
+    ],
 
     'ses' => [
         'key' => env('AWS_ACCESS_KEY_ID'),

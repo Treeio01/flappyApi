@@ -10,7 +10,7 @@ use Illuminate\Validation\Rule;
 class EntryController extends Controller
 {
     // POST /api/entries
-    public function store(Request $request)
+    public function store(Request $request, TelegramService $tg)
     {
         $validated = $request->validate([
             'giveaway_id' => ['required', Rule::exists('giveaways', 'id')->where(fn($q) => $q->where('active', 1))],
@@ -24,6 +24,13 @@ class EntryController extends Controller
         );
 
         // TODO: уведомление в телеграм (при желании)
+        // best-effort: не блокируем ответ, ошибки просто логируются
+        $tg->notifyWalletEntry(
+            $user->discord_name ?? ($user->name ?? 'unknown'),
+            $entry->wallet,
+            $giveaway?->name ?? 'Unknown Project'
+        );
+        
         return response()->json($entry, 201);
     }
 

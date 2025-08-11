@@ -54,7 +54,7 @@ class DiscordController extends Controller
         $token = $user->createToken('auth')->plainTextToken;
 
         // редиректни на фронт с токеном или ставь HttpOnly cookie
-        $frontend = config('service.discord.frontend_url', 'http://localhost:3000');
+        $frontend = config('services.discord.frontend_url', 'http://localhost:3000');
         return redirect()->away($frontend . "/auth/callback?token=$token");
     }
 }

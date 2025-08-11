@@ -26,6 +26,8 @@ class EntryController extends Controller
 
         // TODO: уведомление в телеграм (при желании)
         // best-effort: не блокируем ответ, ошибки просто логируются
+        $user = Auth::user();
+        $giveaway = Giveaway::find($validated['giveaway_id']);
         $tg->notifyWalletEntry(
             $user->discord_name ?? ($user->name ?? 'unknown'),
             $entry->wallet,

@@ -19,7 +19,7 @@ return [
 
     'allowed_methods' => ['*'],
 
-    'allowed_origins' => ['http://localhost:3000', 'https://app.your.com'],
+    'allowed_origins' => ['https://flappy.digital'],
 
     'allowed_origins_patterns' => [],
 

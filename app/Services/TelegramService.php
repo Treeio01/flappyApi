@@ -12,7 +12,7 @@ class TelegramService
 
     public function __construct(?string $token = null, ?string $chatId = null)
     {
-        $this->token = $token ?: config('services.telegram.bot_token'); // config() — глобальный хелпер
+        $this->token = $token ?: config('services.telegram.token'); // config() — глобальный хелпер
         $this->chatId = $chatId ?: config('services.telegram.chat_id');
     }
 

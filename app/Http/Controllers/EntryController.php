@@ -6,6 +6,7 @@ use App\Models\Giveaway;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+use App\Services\TelegramService;
 
 class EntryController extends Controller
 {
@@ -30,7 +31,7 @@ class EntryController extends Controller
             $entry->wallet,
             $giveaway?->name ?? 'Unknown Project'
         );
-        
+
         return response()->json($entry, 201);
     }
 
